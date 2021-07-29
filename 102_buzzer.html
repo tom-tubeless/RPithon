@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Learn Python with the Raspberry Pi</title>
+    <title>3. Einen Buzzer summen lassen &#8212; Learn Python with the Raspberry Pi</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -44,14 +44,15 @@
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="101_hello_world.html" />
+    <link rel="next" title="4. Making a Buzzer alarm" href="102_making_a_buzzer_alarm.html" />
+    <link rel="prev" title="2. Hello world" href="101_hello_world.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -88,10 +89,30 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="101_python_gpio.html">
-   GPIO-Pins
+   1. GPIO-Pins &amp; Python Grundlagen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="101_hello_world.html">
+   2. Hello world
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   3. Einen Buzzer summen lassen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="102_making_a_buzzer_alarm.html">
+   4. Making a Buzzer alarm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="103_vibration.html">
+   5. Vibration
   </a>
  </li>
 </ul>
@@ -176,14 +197,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -192,14 +205,17 @@
         
               <div>
                 
-  <p>lkjlkjlkj</p>
+  <div class="section" id="einen-buzzer-summen-lassen">
+<h1><span class="section-number">3. </span>Einen Buzzer summen lassen<a class="headerlink" href="#einen-buzzer-summen-lassen" title="Permalink to this headline">¶</a></h1>
+<p>lkjlkjlkj</p>
+</div>
 
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
+            repo: "tom-tubeless/RPithon",
+            ref: "main",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -219,7 +235,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="101_hello_world.html" title="previous page">&lt;no title&gt;</a>
+    <a class='left-prev' id="prev-link" href="101_hello_world.html" title="previous page"><span class="section-number">2. </span>Hello world</a>
+    <a class='right-next' id="next-link" href="102_making_a_buzzer_alarm.html" title="next page"><span class="section-number">4. </span>Making a Buzzer alarm</a>
 
         </div>
         

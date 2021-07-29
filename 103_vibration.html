@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. GPIO-Pins &amp; Python Grundlagen &#8212; Learn Python with the Raspberry Pi</title>
+    <title>5. Vibration &#8212; Learn Python with the Raspberry Pi</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Hello world" href="101_hello_world.html" />
-    <link rel="prev" title="Learn Python with the Raspberry Pi" href="intro.html" />
+    <link rel="prev" title="4. Making a Buzzer alarm" href="102_making_a_buzzer_alarm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -90,8 +89,8 @@
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="101_python_gpio.html">
    1. GPIO-Pins &amp; Python Grundlagen
   </a>
  </li>
@@ -110,8 +109,8 @@
    4. Making a Buzzer alarm
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="103_vibration.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    5. Vibration
   </a>
  </li>
@@ -156,7 +155,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/101_python_gpio.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/103_vibration.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -176,7 +175,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/tom-tubeless/RPithon/issues/new?title=Issue%20on%20page%20%2F101_python_gpio.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/tom-tubeless/RPithon/issues/new?title=Issue%20on%20page%20%2F103_vibration.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -197,31 +196,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gpio-pins">
-   1.1. GPIO-Pins
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#python">
-   1.2. Python
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#python-bibliotheken">
-     Python- Bibliotheken
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -230,52 +204,8 @@
         
               <div>
                 
-  <div class="section" id="gpio-pins-python-grundlagen">
-<h1><span class="section-number">1. </span>GPIO-Pins &amp; Python Grundlagen<a class="headerlink" href="#gpio-pins-python-grundlagen" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="gpio-pins">
-<h2><span class="section-number">1.1. </span>GPIO-Pins<a class="headerlink" href="#gpio-pins" title="Permalink to this headline">¶</a></h2>
-<p>Bevor wir mit dem Unterricht beginnen, sollten wir etwas über den Raspberry Pi (RPi) wissen: GPIO-Nutzung und die Grundbefehle der Programmiersprache Python3.
-Der RPi steuert externe Module und Sensoren über Pins, die <em>GPIO-Pins</em> genannt werden.
-GPIO steht für <em>General Purpose Input Output</em>, was bedeutet, dass wir diese Pins für verschiedene Eingabe- und Ausgabebefehle verwenden können.
-Um die GPIO-Pins zu verwenden, müssen wir zuerst ihren Modus einstellen.
-Es gibt zwei Modi: der erste Modus ist <code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code>, der zweite Modus ist <code class="docutils literal notranslate"><span class="pre">GPIO.BOARD</span></code>.
-Tauchen wir tiefer ein, um zu verstehen, was diese Modi bedeuten und wie sie funktionieren.</p>
-<p><img alt="GPIO-Modi des RPi" src="_images/gpio_modes.png" /></p>
-<p>Die Option <code class="docutils literal notranslate"><span class="pre">GPIO.BOARD</span></code> Option gibt an, dass Nummern, die du programmierst den physischen (in der Mitte des Diagramms: <em>Physical</em>) entsprechen.
-Die Option <code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code> bedeutet, dass du die Nummern des “Broadcom SOC channel” (BCM) zum Programmieren nimmst (auf beiden Seiten des Diagramms).</p>
-<p>Der Einfachheit halber, verwenden wir im Unterricht <code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code> und <strong>nicht</strong> <code class="docutils literal notranslate"><span class="pre">GPIO.BOARD</span></code>.
-Alle von uns markierten Pins auf der Platine sind funktionale Pins, z.B. haben wir den Buzzer mit <code class="docutils literal notranslate"><span class="pre">GPI01</span></code> unter Funktionsmodus (die Spalte mit der Bezeichnung Name) markiert, aber wir müssen den Buzzer mit <code class="docutils literal notranslate"><span class="pre">GPI018</span></code> im BCM-Modus programmieren.</p>
-</div>
-<div class="section" id="python">
-<h2><span class="section-number">1.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<p>Als nächstes werden wir eine kurze Einführung in Python geben.
-Python ist populäre Programmiersprache, und eine sehr einfache.</p>
-<p>In unserem Unterricht werden wir Python3, die neueste Python-Version, verwenden. beginnen wir mit einigen einfachen Anweisungen für den Einstieg in Python.</p>
-<p>Das erste Projekt für jeden, der Python lernt, ist <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>. Wir können das erreichen, indem wir “Hello World” über unsere Konsole ausgeben, aber wie?
-Python hat eine eingebaute Funktion namens <code class="docutils literal notranslate"><span class="pre">&quot;print&quot;</span></code>, mit der wir alles in unserer Konsole ausgeben können. Versuchen wir es mal:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Gut gemacht!</p>
-<div class="section" id="python-bibliotheken">
-<h3>Python- Bibliotheken<a class="headerlink" href="#python-bibliotheken" title="Permalink to this headline">¶</a></h3>
-<p>Weiter geht es mit dem Thema Bibliotheken.
-Wir importieren die Bibliotheken am Anfang unseres Codes.
-Sie enthalten Funktionen, die wir aufrufen können, um bestimmte Befehle auszuführen.
-Die gebräuchlichsten Bibliotheken, die wir verwenden, sind <code class="docutils literal notranslate"><span class="pre">time</span></code> und <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RPIO.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
-<span class="kn">import</span> <span class="nn">time</span>
-</pre></div>
-</div>
-<p>Die <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code>-Bibliothek erlaubt es uns, Befehle auszuführen, die <code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">INPUT</span></code> und <code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code> steuern, wie wir es oben bei der Einführung der <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>-Pins besprochen haben.</p>
-<p>Die Zeitbibliothek ermöglicht es uns, das Programm zu verzögern, damit wir genug Zeit haben, um eine bestimmte Funktion auszuführen.
-Wir verwenden dazu die Funktion <code class="docutils literal notranslate"><span class="pre">sleep</span></code> innerhalb der Zeitbibliothek. Zum Beispiel:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Mit dem Befehl <code class="docutils literal notranslate"><span class="pre">time.sleep(1)</span></code> wartet unsere Software 1 Sekunde bevor sie weiterarbeitet.</p>
-</div>
-</div>
+  <div class="section" id="vibration">
+<h1><span class="section-number">5. </span>Vibration<a class="headerlink" href="#vibration" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -303,8 +233,7 @@ Wir verwenden dazu die Funktion <code class="docutils literal notranslate"><span
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Learn Python with the Raspberry Pi</a>
-    <a class='right-next' id="next-link" href="101_hello_world.html" title="next page"><span class="section-number">2. </span>Hello world</a>
+    <a class='left-prev' id="prev-link" href="102_making_a_buzzer_alarm.html" title="previous page"><span class="section-number">4. </span>Making a Buzzer alarm</a>
 
         </div>
         

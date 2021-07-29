@@ -1,4 +1,6 @@
-# GPIO-Pins
+# GPIO-Pins & Python Grundlagen
+
+## GPIO-Pins
 
 Bevor wir mit dem Unterricht beginnen, sollten wir etwas über den Raspberry Pi (RPi) wissen: GPIO-Nutzung und die Grundbefehle der Programmiersprache Python3.
 Der RPi steuert externe Module und Sensoren über Pins, die _GPIO-Pins_ genannt werden.
@@ -15,7 +17,7 @@ Die Option `GPIO.BCM` bedeutet, dass du die Nummern des "Broadcom SOC channel" (
 Der Einfachheit halber, verwenden wir im Unterricht `GPIO.BCM` und **nicht** `GPIO.BOARD`.
 Alle von uns markierten Pins auf der Platine sind funktionale Pins, z.B. haben wir den Buzzer mit `GPI01` unter Funktionsmodus (die Spalte mit der Bezeichnung Name) markiert, aber wir müssen den Buzzer mit `GPI018` im BCM-Modus programmieren.
 
-# Python
+## Python
 
 Als nächstes werden wir eine kurze Einführung in Python geben.
 Python ist populäre Programmiersprache, und eine sehr einfache.
@@ -31,7 +33,7 @@ print("Hello World")
 
 Gut gemacht!
 
-## Python- Bibliotheken
+### Python- Bibliotheken
 
 Weiter geht es mit dem Thema Bibliotheken.
 Wir importieren die Bibliotheken am Anfang unseres Codes.
