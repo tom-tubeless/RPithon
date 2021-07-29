@@ -36,3 +36,5 @@ html:
 launch_buttons:
   notebook_interface: "jupyterlab" # or "classic"
   binderhub_url: https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?filepath=docs
+  thebe                  : true
+
