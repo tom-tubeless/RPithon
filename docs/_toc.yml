@@ -4,6 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-  - file: 101_python_gpio.md
-  - file: 101_hello_world.ipynb
-  - file: 102_buzzer.md
+  - file: 101_python_gpio
+  - file: 101_hello_world
+  - file: 102_buzzer
