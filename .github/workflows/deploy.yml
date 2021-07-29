@@ -1,29 +1,29 @@
-name: deploy
+name: tests
 
 on:
-  # Trigger the deploy on push to main branch
+  # Trigger the workflow on push or pull request on main branch
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
   schedule:
-    # jupyter-book is updated regularly, let's run this deployment every month in case something fails
-    # <minute [0,59]> <hour [0,23]> <day of the month [1,31]> <month of the year [1,12]> <day of the week [0,6]>
-    # https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07
-    # https://crontab.guru/every-month
-    # Run cron job every month
+    # Run cron job every month, https://crontab.guru/every-month
     - cron: "0 0 1 * *"
+  workflow_dispatch:
 
 jobs:
-  # This job deploys the example book
-  deploy-example-book:
+  # This job tests that the CC works
+  test-cc-and-jb-build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest] # currently not testing on windows
         python-version: [3.8]
     steps:
       - uses: actions/checkout@v2
-      # Install CC
+      # Setup
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
@@ -31,22 +31,23 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-      # Use default CC
-      - name: Cookiecutter no GHA
+      # Use the default CC
+      - name: Check black style
         run: |
-          cookiecutter . --no-input include_ci=no
-      # Install requirements.txt
-      - name: Install requirements
+          black ./ --check
+      # Run tests
+      - name: Pytest tests
         run: |
-          pip install -r my_book/requirements.txt
+          pytest
       # Build the example book
-      - name: Build book
+      - name: Build default book
         run: |
+          pip install -r requirements.txt
           jupyter-book build my_book/my_book/
-      # Deploy html to gh-pages
+      # Push example book to gh-pages
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.6.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build/html
+          publish_dir: ./book/_build/html
           publish_branch: gh-pages
