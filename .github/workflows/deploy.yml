@@ -43,7 +43,7 @@ jobs:
       - name: Build default book
         run: |
           pip install -r requirements.txt
-          jupyter-book build my_book/my_book/
+          jupyter-book build ./book
       # Push example book to gh-pages
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.6.1
