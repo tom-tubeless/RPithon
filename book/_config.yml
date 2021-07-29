@@ -39,6 +39,8 @@ html:
   comments:
     utterances:
       repo: "https://github.com/tom-tubeless/RPithon"
+  # Add Annotations
+  hypothesis: true
 
 # Interactive Contents
 launch_buttons:
