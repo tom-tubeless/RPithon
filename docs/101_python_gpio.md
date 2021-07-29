@@ -25,6 +25,31 @@ In unserem Unterricht werden wir Python3, die neueste Python-Version, verwenden.
 Das erste Projekt für jeden, der Python lernt, ist `"Hello World"`. Wir können das erreichen, indem wir "Hello World" über unsere Konsole ausgeben, aber wie?
 Python hat eine eingebaute Funktion namens `"print"`, mit der wir alles in unserer Konsole ausgeben können. Versuchen wir es mal:
 
-```{code-cell} ipython3
+```
 print("Hello World")
 ```
+
+Gut gemacht!
+
+## Python- Bibliotheken
+
+Weiter geht es mit dem Thema Bibliotheken.
+Wir importieren die Bibliotheken am Anfang unseres Codes.
+Sie enthalten Funktionen, die wir aufrufen können, um bestimmte Befehle auszuführen.
+Die gebräuchlichsten Bibliotheken, die wir verwenden, sind `time` und `RPi.GPIO`.
+
+```
+import RPIO.GPIO as GPIO
+import time
+```
+
+Die `RPi.GPIO`-Bibliothek erlaubt es uns, Befehle auszuführen, die `GPIO INPUT` und `OUTPUT` steuern, wie wir es oben bei der Einführung der `GPIO`-Pins besprochen haben.
+
+Die Zeitbibliothek ermöglicht es uns, das Programm zu verzögern, damit wir genug Zeit haben, um eine bestimmte Funktion auszuführen.
+Wir verwenden dazu die Funktion `sleep` innerhalb der Zeitbibliothek. Zum Beispiel:
+
+```
+time.sleep(1)
+```
+
+Mit dem Befehl `time.sleep(1)` wartet unsere Software 1 Sekunde bevor sie weiterarbeitet.
