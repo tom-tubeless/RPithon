@@ -1,4 +1,4 @@
-name: tests
+name: deploy
 
 on:
   # Trigger the workflow on push or pull request on main branch
@@ -35,10 +35,10 @@ jobs:
       - name: Check black style
         run: |
           black ./ --check
-      # Run tests
-      - name: Pytest tests
-        run: |
-          pytest
+      # # Run tests
+      # - name: Pytest tests
+      #   run: |
+      #     pytest
       # Build the example book
       - name: Build default book
         run: |
