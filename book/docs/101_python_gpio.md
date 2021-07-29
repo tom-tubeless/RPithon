@@ -128,7 +128,6 @@ Schleifen ermöglichen es uns, etwas zu tun und es entweder für immer oder unte
 In unserer Lektion werden wir zum Beispiel oft die `while`-Schleife verwenden, lernen wir sie kennen:
 
 ```{code-cell} python3
-:tags: ["margin"]
 number = 0
 while True :
     number = number + 1

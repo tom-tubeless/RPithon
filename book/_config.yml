@@ -6,6 +6,10 @@ author: Lutz Tomala
 logo: rpi_logo.png
 copyright: "2021"
 
+# Exclude Jupyter-notebooks
+exclude_patterns: [*.ipynb]
+only_build_toc_files: true
+
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -31,6 +35,11 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  # Add comments
+  comments:
+    utterances:
+      repo: "https://github.com/tom-tubeless/RPithon"
+
 
 # Interactive Contents
 launch_buttons:
