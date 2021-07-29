@@ -6,10 +6,10 @@ author: Lutz Tomala
 logo: rpi_logo.png
 copyright: "2021"
 
-# # Force re-execution of notebooks on each build.
-# # See https://jupyterbook.org/content/execute.html
-# execute:
-#   execute_notebooks: force
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: force
 
 # # Define the name of the latex output file for PDF builds
 # latex:
@@ -31,3 +31,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# Interactive Contents
+launch_buttons:
+  notebook_interface: "jupyterlab" # or "classic"
+  binderhub_url: https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?filepath=docs
