@@ -1,0 +1,9 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+  - file: 101_python_gpio.md
+  - file: 101_hello_world.ipynb
+  - file: 102_buzzer.md
