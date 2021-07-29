@@ -3,7 +3,11 @@
 
 format: jb-book
 root: intro
+options:
+  numbered: 2
 chapters:
   - file: 101_python_gpio
   - file: 101_hello_world
   - file: 102_buzzer
+  - file: 102_making_a_buzzer_alarm
+  - file: 103_vibration

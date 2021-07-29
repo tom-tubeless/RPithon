@@ -9,16 +9,16 @@ copyright: "2021"
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: cache
 
 # # Define the name of the latex output file for PDF builds
 # latex:
 #   latex_documents:
 #     targetname: book.tex
 
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
+# # Add a bibtex file so that we can create citations
+# bibtex_bibfiles:
+#   - references.bib
 
 # Information about where the book exists on the web
 repository:
@@ -36,5 +36,4 @@ html:
 launch_buttons:
   notebook_interface: "jupyterlab" # or "classic"
   binderhub_url: https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?filepath=docs
-  thebe                  : true
-
+  thebe: true
