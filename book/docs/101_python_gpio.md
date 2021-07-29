@@ -1,3 +1,15 @@
+jupytext:
+formats: md:myst
+text_representation:
+extension: .md
+format_name: myst
+kernelspec:
+display_name: Python 3.9
+language: python
+name: python3
+
+---
+
 # GPIO-Pins & Python Grundlagen
 
 ## GPIO-Pins
@@ -27,7 +39,7 @@ In unserem Unterricht werden wir Python3, die neueste Python-Version, verwenden.
 Das erste Projekt für jeden, der Python lernt, ist `"Hello World"`. Wir können das erreichen, indem wir "Hello World" über unsere Konsole ausgeben, aber wie?
 Python hat eine eingebaute Funktion namens `"print"`, mit der wir alles in unserer Konsole ausgeben können. Versuchen wir es mal:
 
-```
+```{code-cell} python3
 print("Hello World")
 ```
 
@@ -40,7 +52,7 @@ Wir importieren die Bibliotheken am Anfang unseres Codes.
 Sie enthalten Funktionen, die wir aufrufen können, um bestimmte Befehle auszuführen.
 Die gebräuchlichsten Bibliotheken, die wir verwenden, sind `time` und `RPi.GPIO`.
 
-```
+```{code-cell} python3
 import RPIO.GPIO as GPIO
 import time
 ```
@@ -50,7 +62,7 @@ Die `RPi.GPIO`-Bibliothek erlaubt es uns, Befehle auszuführen, die `GPIO INPUT`
 Die Zeitbibliothek ermöglicht es uns, das Programm zu verzögern, damit wir genug Zeit haben, um eine bestimmte Funktion auszuführen.
 Wir verwenden dazu die Funktion `sleep` innerhalb der Zeitbibliothek. Zum Beispiel:
 
-```
+```{code-cell} python3
 time.sleep(1)
 ```
 
@@ -62,13 +74,13 @@ Kommen wir nun zu den Variablen.
 Variablen ermöglichen es uns, Daten im Speicher zu halten und Informationen kurzfristig zu speichern, während unser Programm läuft.
 Wir können unterschiedliche _Datentypen_ speichern: ein Wort, einen Satz, eine Zahl oder sogar eine "Flag", die angibt, ob etwas wahr oder falsch ist (_Boolean_).
 
-```
+```{code-cell} python3
 name "tomala"
 ```
 
 In diesem Beispiel habe ich meinen Namen in der Variablen "name" als String gespeichert, wie sieht es mit den Zahlen aus?
 
-```
+```{code-cell} python3
 raspberrypi_version = 3
 ```
 
@@ -76,7 +88,7 @@ Wir haben die ganze Zahl 2 im Variablennamen "raspberrypi*version" gesprichert.
 Wenn wir die 2 in Anführungszeichen setzen, wie z.B. "2", ist es ein \_String* (eine Zeichenkette), kein _Integer_ (keine ganze Zahl)!
 Wir können auch einen Komma-Wert, auch _Float_ genannt, wie folgt speichern:
 
-```
+```{code-cell} python3
 raspberrypi_version = 3.2
 ```
 
@@ -114,7 +126,8 @@ Wenn wir nun über Bedingungen Bescheid wissen, wie sieht es dann mit `loops` (S
 Schleifen ermöglichen es uns, etwas zu tun und es entweder für immer oder unter bestimmten Bedingungen zu wiederholen.
 In unserer Lektion werden wir zum Beispiel oft die `while`-Schleife verwenden, lernen wir sie kennen:
 
-```
+```{code-cell} python3
+:tags: ["margin"]
 number = 0
 while True :
     number = number + 1
