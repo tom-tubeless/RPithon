@@ -7,7 +7,7 @@ logo: rpi_logo.png
 copyright: "2021"
 
 # Exclude Jupyter-notebooks
-exclude_patterns: [*.ipynb]
+# exclude_patterns: [*.ipynb]
 only_build_toc_files: true
 
 # Force re-execution of notebooks on each build.
@@ -39,7 +39,6 @@ html:
   comments:
     utterances:
       repo: "https://github.com/tom-tubeless/RPithon"
-
 
 # Interactive Contents
 launch_buttons:

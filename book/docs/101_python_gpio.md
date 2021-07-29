@@ -30,6 +30,8 @@ Die Option `GPIO.BCM` bedeutet, dass du die Nummern des "Broadcom SOC channel" (
 Der Einfachheit halber, verwenden wir im Unterricht `GPIO.BCM` und **nicht** `GPIO.BOARD`.
 Alle von uns markierten Pins auf der Platine sind funktionale Pins, z.B. haben wir den Buzzer mit `GPI01` unter Funktionsmodus (die Spalte mit der Bezeichnung Name) markiert, aber wir müssen den Buzzer mit `GPI018` im BCM-Modus programmieren.
 
+---
+
 ## Python
 
 Als nächstes werden wir eine kurze Einführung in Python geben.
@@ -141,6 +143,8 @@ Dann erhöhen wir die Zahl um 1, geben die Zahl in unserer Konsole aus und warte
 
 Versuchen Sie, diesen Teil des Codes auszuführen, was wird passieren? Wird das Programm jemals aufhören?
 Wird die Zahl 0 bleiben?
+
+---
 
 ### Fazit
 
