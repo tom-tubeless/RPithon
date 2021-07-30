@@ -32,11 +32,13 @@ Was ist ein Buzzer, fragst du dich?
 Der Buzzer ist ein Ausgangsmodul, das einen Ton erzeugt, wenn er von elektrischem Strom durchflossen wird.
 Aufgrund der besonderen Struktur des Buzzers vibriert er periodisch und wandelt so den die elektrischen Signale in akkustische (hörbare) um (siehe {numref}`text %s <piezo_buzzer>`).
 
+<!--
 ```{figure} ./img/piezo_buzzer.png
 :name: piezo_buzzer
 
 Schematischer Querschnitt eines Summers. | Lutz Tomala 2021
 ```
+-->
 
 (buzzer_python)=
 
@@ -113,11 +115,12 @@ Nach 0,5 Sekunden wollen wir den Buzzer stoppen. Wenn wir den Summer anhalten wo
 GPIO.output (buzzer_pin, GPIO.LOW)
 ```
 
-```{figure} ./img/buzzer_hilo.png
+<!-- ```{figure} ./img/buzzer_hilo.png
 :name: buzzer_hilo
 
 Schematischer Darstellung der Ein- und Ausgangssignale am Summer. | Lutz Tomala 2021
 ```
+-->
 
 Dann bereinigen Sie die `GPIO`-Pins, um sicherzustellen, dass wir sie wieder verwenden können, indem wir sie eingeben.
 
