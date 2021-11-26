@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Vibration &#8212; Learn Python with the Raspberry Pi</title>
+    <title>4. Vibration &#8212; Learn Python with the Raspberry Pi</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -40,6 +40,40 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/tom-tubeless/RPithon");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -51,7 +85,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="4. Making a Buzzer alarm" href="102_making_a_buzzer_alarm.html" />
+    <link rel="prev" title="2. Einen Buzzer summen lassen" href="102_buzzer.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,23 +129,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="101_hello_world.html">
-   2. Hello world
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="102_buzzer.html">
-   3. Einen Buzzer summen lassen
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="102_making_a_buzzer_alarm.html">
-   4. Making a Buzzer alarm
+   2. Einen Buzzer summen lassen
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. Vibration
+   4. Vibration
   </a>
  </li>
 </ul>
@@ -153,7 +177,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/docs/103_vibration.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/docs/103_vibration.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -191,11 +218,44 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?urlpath=lab/tree/book/docs/103_vibration.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#so-funktioniert-das-vibrationsmodul">
+   4.1. So funktioniert das Vibrationsmodul
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -205,7 +265,30 @@
               <div>
                 
   <div class="section" id="vibration">
-<h1><span class="section-number">5. </span>Vibration<a class="headerlink" href="#vibration" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Vibration<a class="headerlink" href="#vibration" title="Permalink to this headline">¶</a></h1>
+<p>In dieser Lektion werden wir das Vibrationsmodul besprechen!
+Wisst ihr was ein Vibrationsmodul ist?</p>
+<div class="figure align-default" id="vibration-module">
+<img alt="../_images/vibration_module.png" src="../_images/vibration_module.png" />
+<p class="caption"><span class="caption-number">Fig. 4.1 </span><span class="caption-text">Das Vibrationsmodul auf dem Crowpi 2. | Lutz Tomala 2021</span><a class="headerlink" href="#vibration-module" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="so-funktioniert-das-vibrationsmodul">
+<h2><span class="section-number">4.1. </span>So funktioniert das Vibrationsmodul<a class="headerlink" href="#so-funktioniert-das-vibrationsmodul" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-nerd-kram admonition">
+<p class="admonition-title">Nerd-Kram 🤓</p>
+<p>Ein Vibrationsmotor ist ein linearer Resonanzantrieb, der eine oszillierende (zu- und abnehmende) Kraft über eine einzige Achse erzeugt.
+Im Gegensatz zu einem Gleichstrom-Exzenter ist er auf eine lineare Wechselspannung angewiesen, um eine Schwingspule anzutreiben, die gegen eine bewegliche rotierende Masse (ERM) gedrückt wird, die mit einer Feder verbunden ist.
+Wenn die Schwingspule mit der Resonanzfrequenz der Feder angetrieben wird, schwingt der gesamte Aktor mit einer wahrnehmbaren Kraft.</p>
+</div>
+<!-- ```{figure} ./img/linear_resonant_actuator.png
+:name: linear_resonant_actuator
+
+Scheamtische Explosionsdarstellung eines Rinear Resonant Actuator. | Lutz Tomala 2021
+```
+-->
+<p>Wir können das Vibrationsmodul für mehrere Anwendungen verwenden, wie wie Alarm und Benachrichtigungen.
+In diesem Tutorial lernen wir lernen wir, wie man ein OUTPUT-Signal an den Vibrationsmotor sendet und Motor sendet und ihn zum Laufen bringt.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -233,7 +316,7 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="102_making_a_buzzer_alarm.html" title="previous page"><span class="section-number">4. </span>Making a Buzzer alarm</a>
+    <a class='left-prev' id="prev-link" href="102_buzzer.html" title="previous page"><span class="section-number">2. </span>Einen Buzzer summen lassen</a>
 
         </div>
         

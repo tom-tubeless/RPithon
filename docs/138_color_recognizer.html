@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Licht messen und auswerten &#8212; Learn Python with the Raspberry Pi</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/tom-tubeless/RPithon");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2. Einen Buzzer summen lassen" href="102_buzzer.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/rpi_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Learn Python with the Raspberry Pi</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="000_intro.html">
+   Learn Python with the Raspberry Pi
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="101_python_gpio.html">
+   1. GPIO-Pins &amp; Python Grundlagen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="102_buzzer.html">
+   2. Einen Buzzer summen lassen
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Licht messen und auswerten
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/docs/138_color_recognizer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/138_color_recognizer.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/tom-tubeless/RPithon"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
+                    class="fab fa-github"></i>Repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/tom-tubeless/RPithon/issues/new?title=Issue%20on%20page%20%2Fdocs/138_color_recognizer.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
+        title="Vollbildmodus"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?urlpath=lab/tree/book/docs/138_color_recognizer.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Starten Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Inhalt
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wann-gehst-du-schlafen">
+   4.1. Wann gehst du schlafen?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-analyse">
+   4.2. Code-Analyse
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#der-buzzer">
+   4.3. Der Buzzer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-hochzeit">
+   4.4. Code-Hochzeit
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="licht-messen-und-auswerten">
+<h1><span class="section-number">4. </span>Licht messen und auswerten<a class="headerlink" href="#licht-messen-und-auswerten" title="Permalink to this headline">¶</a></h1>
+<p>In dieser Lektion lernen wir, wie man die Lichtstärke mit Hilfe eines Lichtsensor (APDS-9002) misst und erkennt.
+Aber zuerst: Was ist ein Lichtsensor und wie funktioniert er?</p>
+<p><img alt="Der Licht-Sensor des RPi" src="../_images/light_sensor.png" /></p>
+<p>Der Lichtsensor auf dem CrowPi2 ist ein wenig schwer zu erkennen, er befindet sich befindet sich zwischen der <em>RFID</em> und dem <em>LCD</em>, auf dem <em>PCB</em> steht <em>light sensor</em>.</p>
+<p>Der Lichtsensor verwendet einen Lichtstromsensor, und reflektiert die Lichtstärke der Umgebung durch den den linearen Ausgangspegel, der direkt die Veränderung des Lichtstroms widerspiegeln kann.
+Das Licht-Spektrum des Sensors ist dem des menschlichen Auges sehr ähnlich.
+Das sit zum Beispiel für den Einsatz der im Bereich der künstlichen Intelligenz nützlich.
+Der Sensor ist weit verbreitet in der Landwirtschaft, Forstwirtschaft, Gewächshäusern, Zucht, Gebäudebeleuchtung, Messung und Forschung.</p>
+<p>Zur Steuerung des Lichtsensors verwenden wir das <em>12C-Protokoll</em>.
+Um die die ganze Sache einfacher zu machen, werden wir eine Bibliothek namens <code class="docutils literal notranslate"><span class="pre">sm</span> <span class="pre">bus</span></code> verwenden, um direkt auf <em>12C</em> zuzugreifen und die Daten zu erhalten.
+Dafür haben wir eine eine spezielle Klasse erstellt…..
+Aber jetzt wird alles die Schritt für Schritt erklärt.</p>
+<div class="section" id="wann-gehst-du-schlafen">
+<h2><span class="section-number">4.1. </span>Wann gehst du schlafen?<a class="headerlink" href="#wann-gehst-du-schlafen" title="Permalink to this headline">¶</a></h2>
+<p>In unserem Beispiel nehmen wir das Szenario der <em>Schlafenszeitbenachrichtigung</em>.
+Woher weist du, dass es Zeit ist, ins Bett zu gehen?
+Wenn es es dunkel wird, weist du, dass es Nacht ist und gehst schlafen.
+Wir verwenden den Lichtsensor, um zu erkennen, ob es dunkler wird und senden eine Alarmbenachrichtigung mit dem <em>Buzzer</em>, damit du weißt, dass es Zeit zum Schlafen ist - Wie ein umgekehrter Wecker.
+Gleichzeitig werden wir die Situation mit Hilfe des <em>LCD</em> überwachen, wie wir es in unseren vorherigen Lektionen getan haben.</p>
+<p>Zunächst importieren wir die erforderlichen Bibliotheken.
+Wir haben bereits die LCD-Bibliothek, die GPIO-Bibliothek und die Zeitbibliothek erwähnt.
+Jetzt importieren wir auch eine neue Bibliothek namens <code class="docutils literal notranslate"><span class="pre">smbus</span></code> um mit dem 12C-Protokoll zu kommunizieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">Adafruit_CharLCD</span> <span class="k">as</span> <span class="nn">LCD</span>
+<span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">smbus</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Es mehrere Arten von Raspberry Pi, zum Beispiel Raspberry Pi 3, 4 und Zero.
+Jede hat eine andere Hardware-Architektur und verschiedene Möglichkeiten, auf den <em>Bustreiber</em> zuzugreifen.
+Um den richtigen Weg zu wählen, müssen wir die <em>Revision</em> des Raspberry Pi herausfinden.
+Glücklicherweise können wir dies mit dem folgenden Code automatisieren:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">RPI_REVISION</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">smbus</span><span class="o">.</span><span class="n">SMBus</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">bus</span> <span class="o">=</span> <span class="n">smbus</span><span class="o">.</span><span class="n">SMBus</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dies wird automatisch den richtigen Treiber für uns auswählen, basierend auf der GPIO-Architektur des Raspberry Pi, den wir verwenden.
+Als nächstes definieren wir den Summer, der uns benachrichtigen soll, wenn das das Licht zu schwach wird, was bedeutet, dass es für uns Zeit ist, ins Bett zu gehen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buzzer_pin</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zuvor haben wir die LCD-Klasse erstellt, um den LCD-Monitor zu steuern, schreiben wir die Klasse erneut, damit wir auf dem LCD-Monitor die Menge an Licht im Raum anzeigen können.
+Definieren wir zunächst die Klasse mit den LCD-Eigenschaften wie Adresse, Spalten und Zeilen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LCDModule</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Define LCD column and row size for 16x2 LCD.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="mh">0x21</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lcd_columns</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lcd_rows</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="c1"># Initialize the LCD using the pins</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">led</span> <span class="o">=</span> <span class="n">LCD</span><span class="o">.</span><span class="n">Adafruit_CharLCDBackpack</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Definieren wir nun die Funktion <code class="docutils literal notranslate"><span class="pre">turn_off</span></code> um die LCD Hintergrundbeleuchtung auszuschalten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Turn back light off</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lcd</span><span class="o">.</span><span class="n">set_backlight</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir haben das Ausschalten hinzugefügt, jetzt fügen wir die Funktion <code class="docutils literal notranslate"><span class="pre">turn_on</span></code> hinzu, um um die Hintergrundbeleuchtung einzuschalten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">turn_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Turn back light on</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lcd</span><span class="o">.</span><span class="n">set_backlight</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fügen wir eine Funktion zum Löschen des LCD-Monitors hinzu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># clear the LCD screen</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">led</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die letzte Funktion ist die Funktion <code class="docutils literal notranslate"><span class="pre">write_lcd</span></code>, die unsere Daten in den LCD-Monitor schreibt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_lcd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">text</span><span class="p">):</span>
+    <span class="c1"># turn on LCD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">turn_on</span> <span class="p">()</span>
+    <span class="c1"># wait 0.1 seconds</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="c1"># Print a two line message</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">lcd</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="c1"># wait 3 seconds</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># clear screen</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="c1"># wait 0.1 seconds</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="c1"># turn off LCD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">turn_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Eine neue Klasse, die wir hinzufügen müssen, ist eine Klasse, um Lichtmenge vom Lichtsensor zu erhalten.
+Fügen wir zuerst die Klasse ein und erklären dann, was vor sich geht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LightSensor</span><span class="p">():</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Define some constants from the datasheet</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span> <span class="o">=</span> <span class="mh">0x5c</span> <span class="c1"># Default device I2C address</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">POWER_DOWN</span> <span class="o">=</span> <span class="mh">0x00</span> <span class="c1"># No active state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">POWER_ON</span> <span class="o">=</span> <span class="mh">0x01</span> <span class="c1"># Power on</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">RESET</span> <span class="o">=</span> <span class="mh">0x07</span> <span class="c1"># Reset data register value</span>
+        <span class="c1"># Start measurement at 4lx resolution. Time typically 16ms.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CONTINUOUS_LOW_RES_MODE</span> <span class="o">=</span> <span class="mh">0x13</span>
+        <span class="c1"># Start measurement at 1lx resolution. Time typically 120ms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CONTINUOUS_HIGH_RES_MODE_1</span> <span class="o">=</span> <span class="mh">0x10</span>
+        <span class="c1"># Start measurement at 0.5lx resolution. Time typically 120ms</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CONTINUOUS_HIGH_RES_MODE_2</span> <span class="o">=</span> <span class="mh">0x11</span>
+        <span class="c1"># Start measurement at 1lx resolution. Time typically 120ms</span>
+        <span class="c1"># Device is automatically set to Power Down after measurement.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_HIGH_RES_MODE_1</span> <span class="o">=</span> <span class="mh">0x20</span>
+        <span class="c1"># Start measurement at 0.5lx resolution. Time typically 120ms</span>
+        <span class="c1"># Device is automatically set to Power Down after measurement.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_HIGH_RES_MODE_2</span> <span class="o">=</span> <span class="mh">0x21</span>
+        <span class="c1"># Start measurement at 1lx resolution. Time typically 120ms</span>
+        <span class="c1"># Device is automatically set to Power Down after measurement.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_LOW_RES_MODE</span> <span class="o">=</span> <span class="mh">0x23</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dann wollen wir eine Funktion erstellen, die den vom Lichtsensor erhaltenen Wert Lichtsensor in lesbare Daten umwandelt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convertToNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Simple function to convert 2 bytes of data</span>
+    <span class="c1"># into a decimal number</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">256</span> <span class="o">*</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">/</span> <span class="mf">1.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zum Schluss schreiben wir die eigentliche Funktion zum Lesen von Daten aus dem Sensor selbst.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">readLight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">bus</span><span class="o">.</span><span class="n">read_i2c_block_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DEVICE</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">ONE_TIME_HIGH_RES_MODE_1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">convertToNumber</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="code-analyse">
+<h2><span class="section-number">4.2. </span>Code-Analyse<a class="headerlink" href="#code-analyse" title="Permalink to this headline">¶</a></h2>
+<p>Der gesamte Code ist sehr deutlich kommentiert, aber lasst es uns trotzdem erklären: wir haben ein paar Funktionen, die wichtigste ist das Lesen des Lichts und dazu benutzen wir den Befehl <code class="docutils literal notranslate"><span class="pre">bus.read_i2c_block_data</span></code>.</p>
+<p>Die Werte, die wir vom Busdriver erhalten, sagen uns nicht viel also müssen wir sie in eine lesbare Zahl umwandeln.
+Dafür verwenden wir den <code class="docutils literal notranslate"><span class="pre">convertToNumber</span></code>-Befehl, mit dem wir die Bytes in Dezimalzahlen umwandeln.</p>
+<p>In der Initialisierungsfunktion der Klasse definieren wir alles, auf das wir auf dem Gerät zugreifen müssen, wie z.B. die Messauflösung, das Ausschalten des Geräts nach der Messung und so weiter….</p>
+<p>Definieren wir nun eine kleine <code class="docutils literal notranslate"><span class="pre">buzz()</span></code>-Funktion, die den Buzzer anruft, wenn wenn das Licht ausgeht, um uns mitzuteilen, dass es Zeit ist, schlafen zu gehen.</p>
+</div>
+<div class="section" id="der-buzzer">
+<h2><span class="section-number">4.3. </span>Der Buzzer<a class="headerlink" href="#der-buzzer" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">buzz</span><span class="p">():</span>
+    <span class="c1"># Make buzzer sound</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">HIGH</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wenn wir die Funktion <code class="docutils literal notranslate"><span class="pre">buzz()</span></code> aufrufen, schaltet sich der Summer für eine halbe Sekunde ein und schaltet sich dann aus, um anzuzeigen, dass es Zeit ist, schlafen zu gehen.</p>
+<p>Definieren wir nun den Lichtsensor und das LCD zur Überwachung der Messwerte.
+Wir verwenden die <code class="docutils literal notranslate"><span class="pre">LightSensor()</span></code>-Bibliothek, um das Licht zu messen und die <code class="docutils literal notranslate"><span class="pre">LCD-Modul</span></code>-Bibliothek, um die Daten auf das LCD zu schreiben.
+Wir konfigurieren auch einen Wert dafür, was für uns schwaches Licht bedeutet indem wir den <code class="docutils literal notranslate"><span class="pre">low_light</span></code>-Wert auf 40 setzen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># define light sensor</span>
+<span class="n">sensor</span> <span class="o">=</span> <span class="n">LightSensor</span><span class="p">()</span>
+<span class="c1"># define LCD module</span>
+<span class="n">lcd_screen</span> <span class="o">=</span> <span class="n">LCDModule</span><span class="p">()</span>
+<span class="c1"># configure low light</span>
+<span class="n">low_light</span> <span class="o">=</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="code-hochzeit">
+<h2><span class="section-number">4.4. </span>Code-Hochzeit<a class="headerlink" href="#code-hochzeit" title="Permalink to this headline">¶</a></h2>
+<p>Lasst uns nun den Hauptcode schreiben und erklären, was er tut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">sensor_data</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">readLight</span><span class="p">()</span>
+    <span class="n">lcd_screen</span><span class="o">.</span><span class="n">write_lcd</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Light Level:</span><span class="se">\n</span><span class="si">%s</span><span class="s2">lx&quot;</span> <span class="o">%</span> <span class="n">sensor_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Light Level : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sensor_data</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; lx&quot;</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">sensor_data</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">):</span>
+        <span class="c1"># the light level is too low, activate buzzer</span>
+        <span class="n">buzz</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Zunächst beginnen wir mit einer <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife, um die Echtzeitdaten von unserem Lichtsensor kontinuierlich zu erfassen.
+Dann lesen wir die Sensordaten mit der Funktion <code class="docutils literal notranslate"><span class="pre">readlight()</span></code> und schreiben die Werte auf das LCD, damit wir sie leicht sehen können.
+Wir geben sie auch auf der Konsole aus.</p>
+<p>Führen wir endlich das Skript aus und sehen uns die Lichtdaten an, die auf dem Terminal angezeigt werden.
+Du wirst feststellen, dass der Buzzer dich ans SChlafengehen erinnert, wenn die Lichtdaten im Zimmer niedriger als 40 sind.</p>
+<p>Großartig!
+Eine weitere Lektion abgeschlossen!
+Versuche, die Low-Level-Wertanzeige oder sogar den Code zu ändern, um ihn in einen Morgen-Alarm umzuwandeln, wenn die Sonne wieder aufgeht!</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "tom-tubeless/RPithon",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="102_buzzer.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>Einen Buzzer summen lassen</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          Durch Lutz Tomala<br/>
+        
+            &copy; Urheberrechte © 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
