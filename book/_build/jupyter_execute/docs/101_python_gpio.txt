@@ -1,0 +1,18 @@
+print("Hello World")
+
+import RPIO.GPIO as GPIO
+import time
+
+time.sleep(1)
+
+name "tomala"
+
+raspberrypi_version = 3
+
+raspberrypi_version = 3.2
+
+number = 0
+while True :
+    number = number + 1
+print(number)
+time.sleep(1)

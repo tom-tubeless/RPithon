@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3. Einen Buzzer summen lassen &#8212; Learn Python with the Raspberry Pi</title>
+    <title>2. Einen Buzzer summen lassen &#8212; Learn Python with the Raspberry Pi</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,17 +33,51 @@
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/tom-tubeless/RPithon");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
@@ -51,8 +85,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4. Making a Buzzer alarm" href="102_making_a_buzzer_alarm.html" />
-    <link rel="prev" title="2. Hello world" href="101_hello_world.html" />
+    <link rel="next" title="4. Licht messen und auswerten" href="138_color_recognizer.html" />
+    <link rel="prev" title="1. GPIO-Pins &amp; Python Grundlagen" href="101_python_gpio.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -71,6 +105,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/rpi_logo.png" class="logo" alt="logo">
       
       
@@ -79,8 +117,8 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -95,24 +133,14 @@
    1. GPIO-Pins &amp; Python Grundlagen
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="101_hello_world.html">
-   2. Hello world
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   3. Einen Buzzer summen lassen
+   2. Einen Buzzer summen lassen
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="102_making_a_buzzer_alarm.html">
-   4. Making a Buzzer alarm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="103_vibration.html">
-   5. Vibration
+  <a class="reference internal" href="138_color_recognizer.html">
+   4. Licht messen und auswerten
   </a>
  </li>
 </ul>
@@ -140,8 +168,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -149,18 +177,21 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/docs/102_buzzer.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/docs/102_buzzer.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -173,12 +204,12 @@
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/tom-tubeless/RPithon"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
+                    class="fab fa-github"></i>Repository</button></a>
         <a class="issues-button"
             href="https://github.com/tom-tubeless/RPithon/issues/new?title=Issue%20on%20page%20%2Fdocs/102_buzzer.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
         
     </div>
 </div>
@@ -186,17 +217,62 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
+        title="Vollbildmodus"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?urlpath=lab/tree/book/docs/102_buzzer.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Starten Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
 
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Inhalt
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2. Einen Buzzer summen lassen
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#was-ist-ein-buzzer">
+     2.1. Was ist ein Buzzer?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#den-buzzer-mit-python-ansteuern">
+   3. Den Buzzer mit Python ansteuern
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -205,9 +281,148 @@
         
               <div>
                 
-  <div class="section" id="einen-buzzer-summen-lassen">
-<h1><span class="section-number">3. </span>Einen Buzzer summen lassen<a class="headerlink" href="#einen-buzzer-summen-lassen" title="Permalink to this headline">¶</a></h1>
-<p>lkjlkjlkj</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="einen-buzzer-summen-lassen">
+<span id="id1"></span><h1><span class="section-number">2. </span>Einen Buzzer summen lassen<a class="headerlink" href="#einen-buzzer-summen-lassen" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="was-ist-ein-buzzer">
+<span id="id2"></span><h2><span class="section-number">2.1. </span>Was ist ein Buzzer?<a class="headerlink" href="#was-ist-ein-buzzer" title="Permalink to this headline">¶</a></h2>
+<p>Ich freue mich auf unsere erste formale Programmierstunde, Sie auch?
+In dieser Lektion werden wir lernen, wie wir unser erstes Modul steuern können: den Summer (<code class="docutils literal notranslate"><span class="pre">buzzer</span></code>, siehe <a class="reference internal" href="#buzzer"><span class="std std-numref">text 2.1</span></a>).</p>
+<div class="figure align-default" id="buzzer">
+<img alt="../_images/buzzer.png" src="../_images/buzzer.png" />
+<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Schematische Darstellung des Summers. | Lutz Tomala 2021</span><a class="headerlink" href="#buzzer" title="Permalink to this image">¶</a></p>
+</div>
+<p>Was ist ein Buzzer, fragst du dich?
+Der Buzzer ist ein Ausgangsmodul, das einen Ton erzeugt, wenn er von elektrischem Strom durchflossen wird.
+Aufgrund der besonderen Struktur des Buzzers vibriert er periodisch und wandelt so den die elektrischen Signale in akkustische (hörbare) um (siehe <code class="xref std std-numref docutils literal notranslate"><span class="pre">text</span> <span class="pre">%s</span></code>).</p>
+<!--
+```{figure} ./img/piezo_buzzer.png
+:name: piezo_buzzer
+
+Schematischer Querschnitt eines Summers. | Lutz Tomala 2021
+```
+-->
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="den-buzzer-mit-python-ansteuern">
+<span id="buzzer-python"></span><h1><span class="section-number">3. </span>Den Buzzer mit Python ansteuern<a class="headerlink" href="#den-buzzer-mit-python-ansteuern" title="Permalink to this headline">¶</a></h1>
+<p>Es gibt zwei Pins des Summers, <code class="docutils literal notranslate"><span class="pre">GND</span></code> und <code class="docutils literal notranslate"><span class="pre">GPIO18</span></code>, was bedeutet, dass der Summer an den <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>-Pin 18 (<code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code>-Modus) des RPi angeschlossen ist, um die digitalen Ausgangssignale zu senden, und der <code class="docutils literal notranslate"><span class="pre">GND</span></code> ist zum Schließen des Stromkreises.
+Wie können wir also den Summer durch Python aktivieren?</p>
+<p>Lasst uns zunächst unseren ersten Befehl schreiben:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code> Bibliothek ist eine offizielle Raspberry Pi-Bibliothek zur Steuerung der <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>-Pins für die Programmiersprache Python.
+Da <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code> ist zu lang, um es oft zu schreiben, nutzen wir eine Abkürzung und importieren die <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code>-Bibliothek und als sie <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>.</p>
+<p>Die zweite Bibliothek, die wir importieren müssen, ist <code class="docutils literal notranslate"><span class="pre">time</span></code>.
+Eine große Bibliothek, aber wir werden eine sehr spezifische Funktion namens <code class="docutils literal notranslate"><span class="pre">sleep</span></code> verwenden, um um eine kleine Zeitspanne zu warten und unseren Summer nur eine Weile summer zu lassen, bevor wir ihn abschalten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir haben gelernt, dass der Buzzer-Pin, an den der RPi angeschlossen ist, <code class="docutils literal notranslate"><span class="pre">GPIO18</span></code> ist.
+Also werden wir den Buzzer-Pin auf 18 setzen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">buzzer_pin</span> <span class="o">=</span> <span class="mi">18</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Außerdem müssen wir den richtigen GPIO-Modus wählen (<code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wie bereits erwähnt, verwenden wir den Modus <code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code>, um auf die <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>-Pins zu verweisen.
+Der Summer ist an <code class="docutils literal notranslate"><span class="pre">GPIO18</span></code> auf <code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code> angeschlossen, aber nicht auf <code class="docutils literal notranslate"><span class="pre">GPIO.BOARD</span></code>.</p>
+<p>Stelle den Buzzer-Pin auf den Modus <code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code> ein:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GPIO</span><span class="o">.</span><span class="n">setup</span> <span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der Summer ist ein Ausgangsmodul, das nur gesteuert werden kann, wenn es ein Signal empfängt (es kann keine an den RPi senden).
+Daher müssen wir den <code class="docutils literal notranslate"><span class="pre">buzzer_pin</span></code> auf <code class="docutils literal notranslate"><span class="pre">GPIO.OUT</span></code> setzen.</p>
+<p>Lasse den Summer ertönen durch Eingabe von:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GPIO</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">HIGH</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im Allgemeinen wird jedes Modul aktiviert, wenn wir es auf <code class="docutils literal notranslate"><span class="pre">GPIO.HIGH</span></code> setzen.
+Wir können <code class="docutils literal notranslate"><span class="pre">GPIO.HIGH</span></code> als ON-Befehl bezeichnen.
+Bei einigen Modulen kann dies je nach Hardware-Struktur anders sein, aber im Allgemeinen funktioniert es so.
+Durch Senden des Ausgangsbefehls <code class="docutils literal notranslate"><span class="pre">GPIO.HIGH</span></code> aktivieren wir das Modul.</p>
+<p>Wir wollen unsere Ohren nicht beschädigen, also wollen wir eine bestimmte Zeit einstellen, in der der Buzzer funktioniert, z.B. eine halbe Sekunde.
+Dazu setzen wir <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code> auf 0,5 Sekunden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Anweisung <code class="docutils literal notranslate"><span class="pre">time.sleep</span></code> friert unser Programm für 0,5 Sekunden ein und fährt danach mit dem nächsten Befehl fort.
+Durch das Einfrieren nach dem <code class="docutils literal notranslate"><span class="pre">GPIO.HIGH</span></code>-Befehl schalten wir den Summer für 0,5 Sekunden ein, bevor wir mit dem nächsten Befehl fortfahren, der ihn ausschaltet.</p>
+<p>Nach 0,5 Sekunden wollen wir den Buzzer stoppen. Wenn wir den Summer anhalten wollen, müssen wir das <code class="docutils literal notranslate"><span class="pre">GPIO.LOW</span></code>-Signal verwenden, sonst wird er nicht gestoppt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GPIO</span><span class="o">.</span><span class="n">output</span> <span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<!-- ```{figure} ./img/buzzer_hilo.png
+:name: buzzer_hilo
+
+Schematischer Darstellung der Ein- und Ausgangssignale am Summer. | Lutz Tomala 2021
+```
+-->
+<p>Dann bereinigen Sie die <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>-Pins, um sicherzustellen, dass wir sie wieder verwenden können, indem wir sie eingeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Aufräumen der <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>s ermöglicht es uns, die gleichen Pins später für andere Zwecke zu verwenden.</p>
+<p>Wenn du endlich das ganze Skript ausführst, wirst du feststellen, dass der Summer einmalig 0,5 Sekunden lang piept.
+Gibt es eine Möglichkeit, den Buzzer mehrmals piepen zu lassen?
+Oder versuch mal, die Verzögerungszeit selbst zu ändern, um ein längeres Summgeräusch zu erhalten!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RPi.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">buzzer_pin</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">setmode</span><span class="p">(</span><span class="n">GPIO</span><span class="o">.</span><span class="n">BCM</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span> <span class="n">setup</span> <span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+<span class="c1"># Make buzzer sound</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">output</span> <span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">HIGH</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1"># Stop buzzer sound</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">output</span> <span class="p">(</span><span class="n">buzzer_pin</span><span class="p">,</span> <span class="n">GPIO</span><span class="o">.</span><span class="n">LOW</span><span class="p">)</span>
+<span class="n">GPIO</span><span class="o">.</span><span class="n">cleanup</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -233,22 +448,42 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="101_hello_world.html" title="previous page"><span class="section-number">2. </span>Hello world</a>
-    <a class='right-next' id="next-link" href="102_making_a_buzzer_alarm.html" title="next page"><span class="section-number">4. </span>Making a Buzzer alarm</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="101_python_gpio.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">1. </span>GPIO-Pins &amp; Python Grundlagen</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="138_color_recognizer.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">4. </span>Licht messen und auswerten</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
-          By Lutz Tomala<br/>
+          Durch Lutz Tomala<br/>
         
-            &copy; Copyright 2021.<br/>
+            &copy; Urheberrechte © 2021.<br/>
       </p>
     </div>
   </footer>

@@ -11,7 +11,7 @@ chapters:
   #   - file: docs/101_hello_world
   #   - file: docs/101_while_counter
   - file: docs/102_buzzer
-  - file: docs/103_vibration
+  - file: docs/138_color_recognizer
   # sections:
   #   - file: docs/102_making_a_buzzer_alarm
   # - file: docs/103_vibration

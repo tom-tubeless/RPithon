@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8e5499552300ddf5d7adccae7cc3b70.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,17 +33,51 @@
     
   <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "https://github.com/tom-tubeless/RPithon");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
@@ -51,7 +85,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. Hello world" href="101_hello_world.html" />
+    <link rel="next" title="2. Einen Buzzer summen lassen" href="102_buzzer.html" />
     <link rel="prev" title="Learn Python with the Raspberry Pi" href="000_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -71,6 +105,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/rpi_logo.png" class="logo" alt="logo">
       
       
@@ -79,8 +117,8 @@
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Dieses Buch durchsuchen ..." aria-label="Dieses Buch durchsuchen ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -96,23 +134,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="101_hello_world.html">
-   2. Hello world
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="102_buzzer.html">
-   3. Einen Buzzer summen lassen
+   2. Einen Buzzer summen lassen
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="102_making_a_buzzer_alarm.html">
-   4. Making a Buzzer alarm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="103_vibration.html">
-   5. Vibration
+  <a class="reference internal" href="138_color_recognizer.html">
+   4. Licht messen und auswerten
   </a>
  </li>
 </ul>
@@ -140,8 +168,8 @@
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                aria-expanded="true" aria-label="Navigation umschalten" aria-controls="site-navigation"
+                title="Navigation umschalten" data-toggle="tooltip" data-placement="left">
                 <i class="fas fa-bars"></i>
                 <i class="fas fa-arrow-left"></i>
                 <i class="fas fa-arrow-up"></i>
@@ -149,18 +177,21 @@
             
             
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Laden Sie diese Seite herunter"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/docs/101_python_gpio.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Notebook-Datei herunterladen" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/docs/101_python_gpio.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Quelldatei herunterladen" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="In PDF drucken"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
@@ -173,12 +204,12 @@
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
             href="https://github.com/tom-tubeless/RPithon"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
+                data-toggle="tooltip" data-placement="left" title="Quell-Repository"><i
+                    class="fab fa-github"></i>Repository</button></a>
         <a class="issues-button"
             href="https://github.com/tom-tubeless/RPithon/issues/new?title=Issue%20on%20page%20%2Fdocs/101_python_gpio.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+                title="Öffnen Sie ein Problem"><i class="fas fa-lightbulb"></i>offenes Thema</button></a>
         
     </div>
 </div>
@@ -186,11 +217,31 @@
             <!-- Full screen (wrap in <a> to have style consistency -->
 
 <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Vollbildmodus"
+        title="Vollbildmodus"><i
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/tom-tubeless/RPithon/main?urlpath=lab/tree/book/docs/101_python_gpio.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Starten Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Starten Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
 
         </div>
 
@@ -198,9 +249,9 @@
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
             <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                <i class="fas fa-list"></i> Inhalt
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gpio-pins">
@@ -217,6 +268,26 @@
      Python- Bibliotheken
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variablen">
+     Variablen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bedingungen">
+     Bedingungen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schleifen">
+     Schleifen
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fazit">
+     Fazit
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -230,7 +301,7 @@
         
               <div>
                 
-  <div class="section" id="gpio-pins-python-grundlagen">
+  <div class="tex2jax_ignore mathjax_ignore section" id="gpio-pins-python-grundlagen">
 <h1><span class="section-number">1. </span>GPIO-Pins &amp; Python Grundlagen<a class="headerlink" href="#gpio-pins-python-grundlagen" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="gpio-pins">
 <h2><span class="section-number">1.1. </span>GPIO-Pins<a class="headerlink" href="#gpio-pins" title="Permalink to this headline">¶</a></h2>
@@ -246,6 +317,7 @@ Die Option <code class="docutils literal notranslate"><span class="pre">GPIO.BCM
 <p>Der Einfachheit halber, verwenden wir im Unterricht <code class="docutils literal notranslate"><span class="pre">GPIO.BCM</span></code> und <strong>nicht</strong> <code class="docutils literal notranslate"><span class="pre">GPIO.BOARD</span></code>.
 Alle von uns markierten Pins auf der Platine sind funktionale Pins, z.B. haben wir den Buzzer mit <code class="docutils literal notranslate"><span class="pre">GPI01</span></code> unter Funktionsmodus (die Spalte mit der Bezeichnung Name) markiert, aber wir müssen den Buzzer mit <code class="docutils literal notranslate"><span class="pre">GPI018</span></code> im BCM-Modus programmieren.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="python">
 <h2><span class="section-number">1.2. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <p>Als nächstes werden wir eine kurze Einführung in Python geben.
@@ -253,8 +325,12 @@ Python ist populäre Programmiersprache, und eine sehr einfache.</p>
 <p>In unserem Unterricht werden wir Python3, die neueste Python-Version, verwenden. beginnen wir mit einigen einfachen Anweisungen für den Einstieg in Python.</p>
 <p>Das erste Projekt für jeden, der Python lernt, ist <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span></code>. Wir können das erreichen, indem wir “Hello World” über unsere Konsole ausgeben, aber wie?
 Python hat eine eingebaute Funktion namens <code class="docutils literal notranslate"><span class="pre">&quot;print&quot;</span></code>, mit der wir alles in unserer Konsole ausgeben können. Versuchen wir es mal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>Gut gemacht!</p>
 <div class="section" id="python-bibliotheken">
@@ -263,17 +339,112 @@ Python hat eine eingebaute Funktion namens <code class="docutils literal notrans
 Wir importieren die Bibliotheken am Anfang unseres Codes.
 Sie enthalten Funktionen, die wir aufrufen können, um bestimmte Befehle auszuführen.
 Die gebräuchlichsten Bibliotheken, die wir verwenden, sind <code class="docutils literal notranslate"><span class="pre">time</span></code> und <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">RPIO.GPIO</span> <span class="k">as</span> <span class="nn">GPIO</span>
 <span class="kn">import</span> <span class="nn">time</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Die <code class="docutils literal notranslate"><span class="pre">RPi.GPIO</span></code>-Bibliothek erlaubt es uns, Befehle auszuführen, die <code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">INPUT</span></code> und <code class="docutils literal notranslate"><span class="pre">OUTPUT</span></code> steuern, wie wir es oben bei der Einführung der <code class="docutils literal notranslate"><span class="pre">GPIO</span></code>-Pins besprochen haben.</p>
 <p>Die Zeitbibliothek ermöglicht es uns, das Programm zu verzögern, damit wir genug Zeit haben, um eine bestimmte Funktion auszuführen.
 Wir verwenden dazu die Funktion <code class="docutils literal notranslate"><span class="pre">sleep</span></code> innerhalb der Zeitbibliothek. Zum Beispiel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>Mit dem Befehl <code class="docutils literal notranslate"><span class="pre">time.sleep(1)</span></code> wartet unsere Software 1 Sekunde bevor sie weiterarbeitet.</p>
+</div>
+<div class="section" id="variablen">
+<h3>Variablen<a class="headerlink" href="#variablen" title="Permalink to this headline">¶</a></h3>
+<p>Kommen wir nun zu den Variablen.
+Variablen ermöglichen es uns, Daten im Speicher zu halten und Informationen kurzfristig zu speichern, während unser Programm läuft.
+Wir können unterschiedliche <em>Datentypen</em> speichern: ein Wort, einen Satz, eine Zahl oder sogar eine “Flag”, die angibt, ob etwas wahr oder falsch ist (<em>Boolean</em>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="s2">&quot;tomala&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In diesem Beispiel habe ich meinen Namen in der Variablen “name” als String gespeichert, wie sieht es mit den Zahlen aus?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raspberrypi_version</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wir haben die ganze Zahl 2 im Variablennamen “raspberrypi<em>version” gesprichert.
+Wenn wir die 2 in Anführungszeichen setzen, wie z.B. “2”, ist es ein _String</em> (eine Zeichenkette), kein <em>Integer</em> (keine ganze Zahl)!
+Wir können auch einen Komma-Wert, auch <em>Float</em> genannt, wie folgt speichern:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raspberrypi_version</span> <span class="o">=</span> <span class="mf">3.2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der letzte Datentyp heißt <em>Boolean</em>.
+Wir verwenden es normalerweise, um anzugeben, ob etwas bereits geschehen ist oder nicht. Zum Beispiel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hatte_fruehstueck</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">hatte_abendessen</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Hier haben wir angegeben, dass wir gefrühstückt und noch nicht zu Abend gegessen haben.</p>
+<p>Gute Arbeit!
+Bis jetzt haben wir gelernt, wie man Bibliotheken importiert und Daten wie Zahlen, Wörter oder Sätze mit Hilfe von Variablen zu speichert.
+Wie sieht es mit Bedingungen aus?</p>
+</div>
+<div class="section" id="bedingungen">
+<h3>Bedingungen<a class="headerlink" href="#bedingungen" title="Permalink to this headline">¶</a></h3>
+<p>Besonders wenn wir mit Booleschen (boolean) Werten arbeiten, wollen wir auch Bedingungen verwenden.
+Die erste Bedingung, die wir lernen, ist <code class="docutils literal notranslate"><span class="pre">if</span></code>: Wenn etwas gilt, dann ue folgendes, sonst etwas anderes tun. Zum Beispiel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">raspberrypi_version</span> <span class="o">==</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="n">neues_raspberrypi</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">else</span>
+    <span class="n">neues_raspberrypi</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Perfekt! Du lernst so schnell!</p>
+</div>
+<div class="section" id="schleifen">
+<h3>Schleifen<a class="headerlink" href="#schleifen" title="Permalink to this headline">¶</a></h3>
+<p>Wenn wir nun über Bedingungen Bescheid wissen, wie sieht es dann mit <code class="docutils literal notranslate"><span class="pre">loops</span></code> (Schleifen) aus?
+Schleifen ermöglichen es uns, etwas zu tun und es entweder für immer oder unter bestimmten Bedingungen zu wiederholen.
+In unserer Lektion werden wir zum Beispiel oft die <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife verwenden, lernen wir sie kennen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span> <span class="p">:</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In dieser Anweisung definieren wir <code class="docutils literal notranslate"><span class="pre">number</span></code> als Integer 0.
+Dann lassen wir eine <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife für immer laufen (<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code> steht da und ändert sich nie, also wird es eine Endlosschleife).
+Dann erhöhen wir die Zahl um 1, geben die Zahl in unserer Konsole aus und warten 1 Sekunde, bevor wir das Ganze noch einmal wiederholen.</p>
+<p>Versuchen Sie, diesen Teil des Codes auszuführen, was wird passieren? Wird das Programm jemals aufhören?
+Wird die Zahl 0 bleiben?</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="fazit">
+<h3>Fazit<a class="headerlink" href="#fazit" title="Permalink to this headline">¶</a></h3>
+<p>Gut gemacht! Wiederholen wir kurz, was wir gelernt haben: Wir können Variablen verwenden, um Informationen wie Integer, Strings, Floats und Boolean zu speichern.
+Wir können Bibliotheken wie <code class="docutils literal notranslate"><span class="pre">GPIO</span></code> und <code class="docutils literal notranslate"><span class="pre">time</span></code> sowie interne Funktionen wie <code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code> importieren.
+Wir können Dinge mit dem Befehl <code class="docutils literal notranslate"><span class="pre">print()</span></code> ausgeben, der in Python eingebaut ist.
+Wir können Schleifen mit <code class="docutils literal notranslate"><span class="pre">while</span></code> laufen lassen.
+Wenn die Anweisung weiterläuft, wird die Schleife weiter ausgeführt, bis wir das Programm beenden.
+Wir können auch Bedingungen wie <code class="docutils literal notranslate"><span class="pre">if</span></code> und <code class="docutils literal notranslate"><span class="pre">else</span></code> verwenden, um zu prüfen, ob etwas passiert, z. B. eine Variablenänderung, und dann einen darauf basierenden Befehl ausführen.
+Nachdem wir nun die Python-Grundlagen gelernt haben, sind wir startklar!
+Lasst uns mit unseren Lektionen fortfahren.</p>
 </div>
 </div>
 </div>
@@ -301,22 +472,42 @@ Wir verwenden dazu die Funktion <code class="docutils literal notranslate"><span
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="000_intro.html" title="previous page">Learn Python with the Raspberry Pi</a>
-    <a class='right-next' id="next-link" href="101_hello_world.html" title="next page"><span class="section-number">2. </span>Hello world</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="000_intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Learn Python with the Raspberry Pi</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="102_buzzer.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>Einen Buzzer summen lassen</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
-          By Lutz Tomala<br/>
+          Durch Lutz Tomala<br/>
         
-            &copy; Copyright 2021.<br/>
+            &copy; Urheberrechte © 2021.<br/>
       </p>
     </div>
   </footer>

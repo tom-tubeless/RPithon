@@ -1,0 +1,92 @@
+import Adafruit_CharLCD as LCD
+import RPi.GPIO as GPIO
+import smbus
+import time
+ # Find the right revision for bus driver
+if(GPIO.RPI_REVISION == 1):
+    bus = smbus.SMBus(0)
+else:
+    bus = smbus.SMBus(1)
+buzzer_pin = 18
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(buzzer_pin, GPIO.OUT)
+class LCDModule():
+    def __init__(self):
+        # Define LCD column and row size for 16x2 LCD.
+        self.address = 0x21
+        self.lcd_columns = 16
+        self.lcd_rows = 2
+        # Initialize the LCD using the pins
+        self.lcd = LCD.Adafruit_CharLCDBackpack(address=self.address)
+    def turn_off(self):
+        # Turn backlight off
+        self.lcd.set_backlight(1)
+    def turn_on(self):
+        # Turn backlight on
+        self.lcd.set_backlight(0)
+    def clear(self):
+        # clear the LCD screen
+        self.lcd.clear()
+    def write_lcd(self,text):
+        # turn on LCD
+        self.turn_on()
+        # wait 0.1 seconds
+        time.sleep(0.1)
+        # Print a two line message
+        self.lcd.message(text)
+        # wait 3 seconds
+        time.sleep(1)
+        # clear screen
+        self.clear()
+        # wait 0.1 seconds
+        time.sleep(0.1)
+        # turn off LCD
+        self.turn_off()
+class LightSensor():
+    def __init__(self):
+        # Define some constants from the datasheet
+        self.DEVICE = 0x5c # Default device I2C address
+        self.POWER_DOWN = 0x00 # No active state
+        self.POWER_ON = 0x01 # Power on
+        self.RESET = 0x07 # Reset data register value
+        # Start measurement at 4lx resolution. Time typically 16ms.
+        self.CONTINUOUS_LOW_RES_MODE = 0x13
+        # Start measurement at 1lx resolution. Time typically 120ms
+        self.CONTINUOUS_HIGH_RES_MODE_1 = 0x10
+        # Start measurement at 0.5lx resolution. Time typically 120ms
+        self.CONTINUOUS_HIGH_RES_MODE_2 = 0x11
+        # Start measurement at 1lx resolution. Time typically 120ms
+        # Device is automatically set to Power Down after measurement.
+        self.ONE_TIME_HIGH_RES_MODE_1 = 0x20
+        # Start measurement at 0.5lx resolution. Time typically 120ms
+        # Device is automatically set to Power Down after measurement.
+        self.ONE_TIME_HIGH_RES_MODE_2 = 0x21
+        # Start measurement at 1lx resolution. Time typically 120ms
+        # Device is automatically set to Power Down after measurement.
+        self.ONE_TIME_LOW_RES_MODE = 0x23
+    def convertToNumber(self, data):
+        # Simple function to convert 2 bytes of data
+        # into a decimal number
+        return ((data[1] + (256 * data[0])) / 1.2)
+    def readLight(self):
+        data = bus.read_i2c_block_data(self.DEVICE,self.ONE_TIME_HIGH_RES_MODE_1)
+        return self.convertToNumber(data)
+def buzz():
+    # Make buzzer sound
+    GPIO.output(buzzer_pin, GPIO.HIGH)
+    time.sleep(0.5)
+    GPIO.output(buzzer_pin, GPIO.LOW)
+# define light sensor
+sensor = LightSensor()
+# define LCD module
+lcd_screen = LCDModule()
+# configure low light
+low_light = 40
+while True:
+    sensor_data = sensor.readLight()
+    lcd_screen.write_lcd(text="Light Level:\n%slx" % sensor_data)
+    print("Light Level : " + str(sensor_data) + " lx")
+    if(sensor_data < 40):
+        # the light level is too low, activate buzzer
+        buzz()
+    time.sleep(0.5)
